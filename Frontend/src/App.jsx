@@ -1,5 +1,10 @@
-function App() {
-  return <h1 className="text-red-800">Hello World</h1>;
-}
+import Navbar from "./components/Navbar/Navbar";
 
+function App() {
+  return (
+    <>
+      <Navbar />
+    </>
+  );
+}
 export default App;
