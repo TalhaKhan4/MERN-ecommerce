@@ -13,14 +13,16 @@ function Slider() {
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
   const sliderImgs = [img1, img2, img3, img4, img5, img6];
 
+  // The below code makes the slider auto scroll
+
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentImgIndex(
-        currentImgIndex + 1 === sliderImgs.length ? 0 : currentImgIndex + 1
-      );
+    const intervalId = setTimeout(() => {
+      setCurrentImgIndex((prevImgIndex) => {
+        return prevImgIndex + 1 === sliderImgs.length ? 0 : prevImgIndex + 1;
+      });
     }, 10000);
 
-    return () => clearInterval(intervalId);
+    return () => clearTimeout(intervalId);
   }, [currentImgIndex]);
 
   return (
@@ -37,6 +39,9 @@ function Slider() {
           ></div>
         );
       })}
+
+      {/* previous button to go to previous img */}
+
       <GrPrevious
         className="absolute top-[50%] translate-y-[-50%] left-0 text-5xl cursor-pointer transition-transform duration-300 text-gray-500"
         onClick={() => {
@@ -47,6 +52,9 @@ function Slider() {
           );
         }}
       />
+
+      {/* next button to go to next img */}
+
       <GrNext
         className="absolute top-[50%] translate-y-[-50%] right-0 text-5xl cursor-pointer transition-transform duration-300 text-gray-500"
         onClick={() => {
@@ -55,6 +63,8 @@ function Slider() {
           );
         }}
       />
+
+      {/* The below div is a container for all the dots which shows which img is currently visible */}
 
       <div className="flex gap-4 absolute bottom-[5%] left-[50%] translate-x-[-50%]">
         {sliderImgs.map((_, i) => (
