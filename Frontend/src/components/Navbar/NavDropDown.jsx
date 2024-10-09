@@ -12,7 +12,7 @@ function NavDropDown({
         activeCategory === category.name ? (
           <div
             key={index}
-            className="absolute left-[5%] top-18 pt-10 bg-white border  border-gray-200 shadow-lg  p-4 min-w-[90vw] flex space-x-8  min-h-[70vh]"
+            className="absolute left-[5%] top-18 pt-10 bg-white border  border-gray-200 shadow-lg  p-4 min-w-[90vw] flex space-x-8  min-h-[70vh] z-50"
             onMouseEnter={() => handleMouseEnter(category.name)} // Keeps dropdown open when mouse enters
             onMouseLeave={handleMouseLeave} // Hides dropdown when mouse leaves
           >
