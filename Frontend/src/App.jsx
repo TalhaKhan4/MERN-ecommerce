@@ -1,4 +1,5 @@
 import Navbar from "./components/Navbar/Navbar";
+import Slider from "./components/Slider/Slider.jsx";
 import Home from "./pages/Home";
 import { Route, Routes } from "react-router-dom";
 import SignIn from "./pages/SignIn";
@@ -10,6 +11,7 @@ function App() {
   return (
     <>
       <Navbar />
+      <Slider />
       <Routes>
         <Route path={"/"} element={<Home />} />
         <Route path={"/login"} element={<SignIn />} />
