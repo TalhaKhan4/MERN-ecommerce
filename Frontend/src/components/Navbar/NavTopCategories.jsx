@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function NavTopCategories({ handleMouseLeave, handleMouseEnter, categories }) {
   return (
     <div className="flex">
@@ -7,7 +9,7 @@ function NavTopCategories({ handleMouseLeave, handleMouseEnter, categories }) {
             <li
               onMouseEnter={() => handleMouseEnter(category.name)}
               onMouseLeave={handleMouseLeave}
-              className={`border-b-white  font-semibold border-b-4  cursor-pointer px-5 pb-4    ${
+              className={`border-b-white  font-semibold border-b-4  cursor-pointer px-4 lg:px-5 py-6 ${
                 category.name === "Men"
                   ? "hover:border-red-500 "
                   : category.name === "Women"
@@ -15,7 +17,9 @@ function NavTopCategories({ handleMouseLeave, handleMouseEnter, categories }) {
                   : "hover:border-orange-500"
               }`}
             >
-              {category.name}
+              <Link to={`/${category.name.toLowerCase()}`}>
+                {category.name}
+              </Link>
             </li>
           </ul>
         );
