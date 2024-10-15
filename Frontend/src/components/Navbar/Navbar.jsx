@@ -1,5 +1,5 @@
 // src/components/Navbar.js
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavTopCategories from "./NavTopCategories";
 import NavDropDown from "./NavDropDown";
 import { FaUserCircle } from "react-icons/fa";
@@ -7,6 +7,7 @@ import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 import MobileNav from "./MobileNav";
+import { useSelector } from "react-redux";
 const categories = [
   {
     name: "Men",
@@ -83,6 +84,7 @@ const categories = [
 const Navbar = () => {
   const [activeCategory, setActiveCategory] = useState(null);
   const [profileDropDown, setPofileDropDown] = useState(false);
+  const cartSize = useSelector((state) => state.cart.cartItems);
 
   const handleMouseEnter = (categoryName) => {
     setActiveCategory(categoryName);
@@ -95,7 +97,7 @@ const Navbar = () => {
   return (
     <>
       {/* Desktop Navbar  */}
-      <div className="hidden md:block bg-white shadow-md border-gray-200 ">
+      <div className="hidden md:block bg-white shadow-md border-gray-200 sticky top-0 z-50">
         <nav className="flex px-6 items-center justify-between ">
           {/* Logo  */}
           <div className="font-bold">
@@ -142,6 +144,7 @@ const Navbar = () => {
             </Link>
 
             {/* Bag icon */}
+
             <Link
               to={"/bag"}
               className="flex flex-col items-center justify-center cursor-pointer"
@@ -149,6 +152,9 @@ const Navbar = () => {
               <AiOutlineShoppingCart className="text-xl" />
               <span className="text-xs font-bold">Bag</span>
             </Link>
+            <span className="absolute text-sm font-bold bg-yellow-500 w-6 flex items-center justify-center h-6 rounded-full top-2 right-1">
+              {cartSize.length}
+            </span>
           </div>
         </nav>
 

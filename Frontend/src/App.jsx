@@ -6,6 +6,7 @@ import SignUp from "./pages/SignUp";
 import Profile from "./pages/Profile";
 import WishList from "./pages/WishList";
 import Bag from "./pages/Bag";
+import ProductPage from "./pages/ProductPage";
 function App() {
   return (
     <>
@@ -17,6 +18,7 @@ function App() {
         <Route path={"/profile"} element={<Profile />} />
         <Route path={"/wishlist"} element={<WishList />} />
         <Route path={"/bag"} element={<Bag />} />
+        <Route path={"/product/:productId"} element={<ProductPage />} />
       </Routes>
     </>
   );
