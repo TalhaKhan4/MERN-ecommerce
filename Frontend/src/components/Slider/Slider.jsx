@@ -1,19 +1,23 @@
-import img1 from "../../assets/images/men-img.webp";
-import img2 from "../../assets/images/women-img.webp";
-import img3 from "../../assets/images/kids-img.jpg";
-import img4 from "../../assets/images/shorts-img.jpg";
-import img5 from "../../assets/images/sports-wear-img.jpg";
-import img6 from "../../assets/images/sale-img.webp";
-
-import { GrNext, GrPrevious } from "react-icons/gr";
-import { FaCircle } from "react-icons/fa";
 import { useEffect, useState } from "react";
+
+// importing all the images of the slider
+import img1 from "../../assets/images/img-1.jpg";
+import img2 from "../../assets/images/img-2.jpg";
+import img3 from "../../assets/images/img-3.jpg";
+import img4 from "../../assets/images/img-4.jpg";
+import img5 from "../../assets/images/img-5.jpg";
+import img6 from "../../assets/images/img-6.jpg";
+
+// importing icons
+import { GrFormNext, GrFormPrevious } from "react-icons/gr";
+import { FaCircle } from "react-icons/fa";
 
 function Slider() {
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
   const sliderImgs = [img1, img2, img3, img4, img5, img6];
 
-  // The below code makes the slider auto scroll
+  // This code makes the slider auto-scroll every 10 seconds.
+  // By passing currentImgIndex in the dependency array, the useEffect hook re-runs every time currentImgIndex changes (either due to the setTimeout after 10s or when the user clicks the previous/next buttons). This ensures that the setTimeout resets and runs again after each image change.
 
   useEffect(() => {
     const intervalId = setTimeout(() => {
@@ -26,51 +30,60 @@ function Slider() {
   }, [currentImgIndex]);
 
   return (
-    <div className="flex flex-row flex-nowrap w-[80%] aspect-[16/7] m-auto mt-8 relative overflow-hidden shadow-2xl rounded-md">
+    /* The below div renders each image in the slider */
+    /* Images are styled as background images and positioned side by side horizontally. */
+    /* The transform property is used to shift the visible image by updating the translateX value, creating the sliding effect. */
+    /* The transition-transform property ensures the sliding animation happens smoothly over 300ms. */
+
+    <div className="flex flex-row flex-nowrap w-[100%] aspect-[8/7] md:aspect-[16/7] mt-4 relative overflow-hidden shadow-2xl">
       {sliderImgs.map((img, i) => {
         return (
           <div
+            className="w-[100%] h-[100%] flex-shrink-0 bg-cover bg-center transition-transform duration-300"
             key={i}
-            className="w-[100%] h-[100%] flex-shrink-0 bg-cover bg-center relative transition-transform duration-300"
             style={{
               backgroundImage: `url(${img})`,
-              transform: `translateX(${-100 * currentImgIndex}%)`,
+              transform: `translateX(${-100 * currentImgIndex}%)`, // Move to the correct image based on currentImgIndex
             }}
           ></div>
         );
       })}
 
-      {/* previous button to go to previous img */}
+      {/* Previous button to navigate to the previous image */}
+      {/* It updates the currentImgIndex by decreasing it. If the current image is the first one, it loops back to the last image. */}
 
-      <GrPrevious
-        className="absolute top-[50%] translate-y-[-50%] left-0 text-5xl cursor-pointer transition-transform duration-300 text-gray-500"
+      <GrFormPrevious
+        className="absolute top-[50%] translate-y-[-50%] left-[2%] md:left-[1%] text-3xl md:text-4xl cursor-pointer transition-transform duration-300 text-black bg-white rounded-full"
         onClick={() => {
           setCurrentImgIndex(
             currentImgIndex - 1 === -1
               ? sliderImgs.length - 1
-              : currentImgIndex - 1
+              : currentImgIndex - 1 // Loop back to the last image if at the first one
           );
         }}
       />
 
-      {/* next button to go to next img */}
+      {/* Next button to navigate to the next image */}
+      {/* It increments the currentImgIndex. If the current image is the last one, it loops back to the first image. */}
 
-      <GrNext
-        className="absolute top-[50%] translate-y-[-50%] right-0 text-5xl cursor-pointer transition-transform duration-300 text-gray-500"
+      <GrFormNext
+        className="absolute top-[50%] translate-y-[-50%] right-[2%] md:right-[1%] text-3xl md:text-4xl cursor-pointer transition-transform duration-300 text-black bg-white rounded-full"
         onClick={() => {
           setCurrentImgIndex(
-            currentImgIndex + 1 === sliderImgs.length ? 0 : currentImgIndex + 1
+            currentImgIndex + 1 === sliderImgs.length ? 0 : currentImgIndex + 1 // Loop back to the first image if at the last one
           );
         }}
       />
 
-      {/* The below div is a container for all the dots which shows which img is currently visible */}
+      {/* This div contains the navigation dots, which indicate the current image in the slider. */}
+      {/* The number of dots corresponds to the number of images. */}
+      {/* The currently active image is highlighted by changing the color of the corresponding dot. */}
 
-      <div className="flex gap-4 absolute bottom-[5%] left-[50%] translate-x-[-50%]">
+      <div className="flex gap-2 absolute bottom-[5%] left-[50%] translate-x-[-50%]">
         {sliderImgs.map((_, i) => (
           <FaCircle
             key={i}
-            className={`cursor-pointer ${
+            className={`cursor-pointer text-xs md:text-sm ${
               i === currentImgIndex ? "text-rose-50" : "text-gray-400"
             }`}
             onClick={() => setCurrentImgIndex(i)}

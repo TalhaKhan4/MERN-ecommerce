@@ -54,7 +54,7 @@ function SignIn() {
         className="bg-white shadow-lg rounded  w-full sm:w-1/2  md:w-1/2 lg:w-1/3 px-8 pt-6 pb-8 mb-4 border"
         onSubmit={handleSubmit}
       >
-        <h2 className="text-2xl mb-4 font-bold">Sign In</h2>
+        <h2 className="text-2xl mb-4 font-bold">Log In</h2>
 
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">

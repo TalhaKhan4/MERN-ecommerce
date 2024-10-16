@@ -62,7 +62,7 @@ function MobileNav({ categories }) {
       <div
         className={` md:hidden ${
           location.pathname != "/" && "hidden"
-        } mt-2 w-fit mx-auto shadow-lg border  rounded-3xl overflow-hidden`}
+        } mt-4 w-fit mx-auto shadow-lg border  rounded-3xl overflow-hidden`}
       >
         <input
           type="text"

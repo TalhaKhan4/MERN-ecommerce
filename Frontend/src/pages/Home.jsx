@@ -1,4 +1,5 @@
 import Slider from "../components/Slider/Slider.jsx";
+
 function Home() {
   return (
     <>

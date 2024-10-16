@@ -1,4 +1,3 @@
-// src/components/Navbar.js
 import React, { useState } from "react";
 import NavTopCategories from "./NavTopCategories";
 import NavDropDown from "./NavDropDown";
@@ -95,11 +94,11 @@ const Navbar = () => {
   return (
     <>
       {/* Desktop Navbar  */}
-      <div className="hidden md:block bg-white shadow-md border-gray-200 ">
+      <div className="hidden md:block bg-white shadow-md sticky top-0 z-40">
         <nav className="flex px-6 items-center justify-between ">
           {/* Logo  */}
           <div className="font-bold">
-            <Link to={"/"}>Logo </Link>
+            <Link to={"/"}>Logo</Link>
           </div>
           {/* listing top categories names  like men women etc */}
           <NavTopCategories
@@ -162,7 +161,7 @@ const Navbar = () => {
         {/* Profile dropdown onhover profile you will dropdown which includes login and orders button  */}
         {profileDropDown && (
           <div
-            className="absolute top-18 right-14 shadow-lg border   p-5 bg-white flex flex-col space-y-2"
+            className="absolute top-18 right-14 shadow-lg border   p-5 bg-white flex flex-col space-y-2 z-40"
             onMouseEnter={() => setPofileDropDown(true)}
             onMouseLeave={() => setPofileDropDown(false)}
           >
