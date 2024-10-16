@@ -26,7 +26,9 @@ function Slider() {
   }, [currentImgIndex]);
 
   return (
+
     <div className="flex flex-row flex-nowrap w-[95%] aspect-[16/5.5]  mt-4 rounded-sm md:rounded-none m-auto md:w-[100%] md:mt-0  relative overflow-hidden">
+
       {sliderImgs.map((img, i) => {
         return (
           <div
@@ -39,8 +41,11 @@ function Slider() {
           ></div>
         );
       })}
+
+
       {/* previous button to go to previous img */}
-      {/* <GrPrevious
+
+      <GrPrevious
         className="absolute top-[50%] translate-y-[-50%] left-0 text-5xl cursor-pointer transition-transform duration-300 text-gray-500"
         onClick={() => {
           setCurrentImgIndex(
@@ -51,6 +56,8 @@ function Slider() {
         }}
       />
 
+      {/* next button to go to next img */}
+      
       <GrNext
         className="absolute top-[50%] translate-y-[-50%] right-0 text-5xl cursor-pointer transition-transform duration-300 text-gray-500"
         onClick={() => {
@@ -58,9 +65,10 @@ function Slider() {
             currentImgIndex + 1 === sliderImgs.length ? 0 : currentImgIndex + 1
           );
         }}
-      /> */}
+      />
 
       {/* The below div is a container for all the dots which shows which img is currently visible */}
+
       <div className="flex gap-4 absolute bottom-[5%] left-[50%] translate-x-[-50%]">
         {sliderImgs.map((_, i) => (
           <FaCircle
