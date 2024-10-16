@@ -26,7 +26,9 @@ function Slider() {
   }, [currentImgIndex]);
 
   return (
-    <div className="flex flex-row flex-nowrap w-[80%] aspect-[16/7] m-auto mt-8 relative overflow-hidden shadow-2xl rounded-md">
+
+    <div className="flex flex-row flex-nowrap w-[95%] aspect-[16/5.5]  mt-4 rounded-sm md:rounded-none m-auto md:w-[100%] md:mt-0  relative overflow-hidden">
+
       {sliderImgs.map((img, i) => {
         return (
           <div
@@ -39,6 +41,7 @@ function Slider() {
           ></div>
         );
       })}
+
 
       {/* previous button to go to previous img */}
 
@@ -54,7 +57,7 @@ function Slider() {
       />
 
       {/* next button to go to next img */}
-
+      
       <GrNext
         className="absolute top-[50%] translate-y-[-50%] right-0 text-5xl cursor-pointer transition-transform duration-300 text-gray-500"
         onClick={() => {
