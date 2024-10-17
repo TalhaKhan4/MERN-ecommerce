@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser";
 import { dbConnection } from "./db/dbConnection.js";
 import helmet from "helmet";
 import compression from "compression";
-
+import AuthRoutes from "./routes/auth.routes.js";
 // Load environment variables
 dotenv.config();
 
@@ -26,7 +26,7 @@ app.use(cors({ origin: "*", credentials: true })); // When credentials: true is 
 app.get("/", (req, res) => {
   res.send("Ecommerce api is working");
 });
-// app.use("/api", routes);
+app.use("/api/auth", AuthRoutes);
 
 // Wildcard route for handling 404 errors
 app.get("*", (req, res) => {
