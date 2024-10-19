@@ -6,6 +6,7 @@ import { dbConnection } from "./db/dbConnection.js";
 import helmet from "helmet";
 import compression from "compression";
 import AuthRoutes from "./routes/auth.routes.js";
+import UserRoutes from "./routes/user.routes.js";
 // Load environment variables
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.get("/", (req, res) => {
   res.send("Ecommerce api is working");
 });
 app.use("/api/auth", AuthRoutes);
+app.use("/api/users", UserRoutes);
 
 // Wildcard route for handling 404 errors
 app.get("*", (req, res) => {
