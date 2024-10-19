@@ -1,85 +1,15 @@
-import React, { useState } from "react";
-import NavTopCategories from "./NavTopCategories";
-import NavDropDown from "./NavDropDown";
+import { useState } from "react";
+
+import NavTopCategories from "./NavTopCategories.jsx";
+import NavDropDown from "./NavDropDown.jsx";
+import MobileNav from "./MobileNav.jsx";
+
 import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
+
 import { Link } from "react-router-dom";
 
-import MobileNav from "./MobileNav";
-const categories = [
-  {
-    name: "Men",
-    subcategories: [
-      {
-        name: "Topwear",
-        items: [
-          "T-Shirts",
-          "Casual Shirts",
-          "Formal Shirts",
-          "Sweatshirts",
-          "Sweaters",
-          "Jackets",
-        ],
-      },
-      {
-        name: "Bottomwear",
-        items: ["Jeans", "Casual Trousers", "Formal Trousers", "Shorts"],
-      },
-      {
-        name: "Footwear",
-        items: [
-          "Casual Shoes",
-          "Sports Shoes",
-          "Formal Shoes",
-          "Sneakers",
-          "Socks",
-        ],
-      },
-      {
-        name: "Gadgets",
-        items: ["Smart Wearables", "Fitness Gadgets", "Headphones", "Speakers"],
-      },
-      {
-        name: "Fashion Accessories",
-        items: [
-          "Wallets",
-          "Belts",
-          "Perfumes & Body Mists",
-          "Trimmers",
-          "Deodorants",
-          "Ties, Cufflinks & Pocket Squares",
-          "Accessory Gift Sets",
-          "Caps & Hats",
-          "Mufflers, Scarves & Gloves",
-          "Phone Cases",
-          "Rings & Wristwear",
-          "Helmets",
-        ],
-      },
-    ],
-  },
-  {
-    name: "Women",
-
-    subcategories: [
-      {
-        name: "Western Wear",
-        items: ["Tops", "Dresses", "Jeans"],
-      },
-    ],
-  },
-  {
-    name: "Kids",
-    subcategories: [
-      {
-        name: "Boys Clothing",
-        items: ["T-Shirts", "Shorts", "Jeans"],
-      },
-    ],
-  },
-];
-
-const Navbar = () => {
+const DesktopNav = () => {
   const [activeCategory, setActiveCategory] = useState(null);
   const [profileDropDown, setPofileDropDown] = useState(false);
 
@@ -100,7 +30,9 @@ const Navbar = () => {
           <div className="font-bold">
             <Link to={"/"}>Logo</Link>
           </div>
-          {/* listing top categories names  like men women etc */}
+
+          {/* listing top categories names like men, women, kids etc */}
+
           <NavTopCategories
             handleMouseEnter={handleMouseEnter}
             handleMouseLeave={handleMouseLeave}
@@ -122,10 +54,10 @@ const Navbar = () => {
             {/* Profile icon */}
 
             <Link
+              to={"/profile"}
               onMouseEnter={() => setPofileDropDown(true)}
               onMouseLeave={() => setPofileDropDown(false)}
               className="flex flex-col items-center justify-center cursor-pointer py-5  "
-              to={"/profile"}
             >
               <FaUserCircle className="text-xl  " />
               <span className="text-xs font-bold">Profile</span>
@@ -158,6 +90,7 @@ const Navbar = () => {
           handleMouseLeave={handleMouseLeave}
           activeCategory={activeCategory}
         />
+
         {/* Profile dropdown onhover profile you will dropdown which includes login and orders button  */}
         {profileDropDown && (
           <div
@@ -184,4 +117,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default DesktopNav;

@@ -2,11 +2,12 @@ import { Link } from "react-router-dom";
 
 function NavTopCategories({ handleMouseLeave, handleMouseEnter, categories }) {
   return (
-    <div className="flex">
-      {categories.map((category) => {
-        return (
-          <ul key={category.name}>
+    <div>
+      <ul className="flex">
+        {categories.map((category, i) => {
+          return (
             <li
+              key={i}
               onMouseEnter={() => handleMouseEnter(category.name)}
               onMouseLeave={handleMouseLeave}
               className={`border-b-white  font-semibold border-b-4  cursor-pointer px-4 lg:px-5 py-6 ${
@@ -21,9 +22,9 @@ function NavTopCategories({ handleMouseLeave, handleMouseEnter, categories }) {
                 {category.name}
               </Link>
             </li>
-          </ul>
-        );
-      })}
+          );
+        })}
+      </ul>
     </div>
   );
 }

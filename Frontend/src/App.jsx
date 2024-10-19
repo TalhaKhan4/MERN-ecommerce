@@ -1,4 +1,5 @@
 // importing navbar component which will be rendered across all routes
+
 import Navbar from "./components/Navbar/Navbar.jsx";
 
 import { Route, Routes } from "react-router-dom";
@@ -27,4 +28,5 @@ function App() {
     </>
   );
 }
+
 export default App;
