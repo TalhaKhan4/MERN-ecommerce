@@ -1,17 +1,11 @@
 import { useState } from "react";
 
-import NavTopCategories from "./NavTopCategories.jsx";
-import NavDropDown from "./NavDropDown.jsx";
-import MobileNav from "./MobileNav.jsx";
-
-import { FaUserCircle } from "react-icons/fa";
-import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
+import { categories } from "./categories.js";
 
 import { Link } from "react-router-dom";
 
 const DesktopNav = () => {
   const [activeCategory, setActiveCategory] = useState(null);
-  const [profileDropDown, setPofileDropDown] = useState(false);
 
   const handleMouseEnter = (categoryName) => {
     setActiveCategory(categoryName);
@@ -21,99 +15,27 @@ const DesktopNav = () => {
     setActiveCategory(null);
   };
 
+  // rendering all top categories like men, women, kids from categories array
+
   return (
-    <>
-      {/* Desktop Navbar  */}
-      <div className="hidden md:block bg-white shadow-md sticky top-0 z-40">
-        <nav className="flex px-6 items-center justify-between ">
-          {/* Logo  */}
-          <div className="font-bold">
-            <Link to={"/"}>Logo</Link>
-          </div>
-
-          {/* listing top categories names like men, women, kids etc */}
-
-          <NavTopCategories
-            handleMouseEnter={handleMouseEnter}
-            handleMouseLeave={handleMouseLeave}
-            categories={categories}
-          />
-
-          {/* Search bar */}
-          <div>
-            <input
-              type="text"
-              className="border border-gray-200 px-8 w-[300px] py-2 rounded-md text-sm placeholder-gray-400 focus:outline outline-gray-400 "
-              placeholder="Search for products"
-              style={{ fontSize: "12px" }} // Small placeholder text
-            />
-          </div>
-
-          {/* Icons Section */}
-          <div className="flex  space-x-6">
-            {/* Profile icon */}
-
-            <Link
-              to={"/profile"}
-              onMouseEnter={() => setPofileDropDown(true)}
-              onMouseLeave={() => setPofileDropDown(false)}
-              className="flex flex-col items-center justify-center cursor-pointer py-5  "
-            >
-              <FaUserCircle className="text-xl  " />
-              <span className="text-xs font-bold">Profile</span>
-            </Link>
-
-            {/* Wishlist icon */}
-            <Link
-              to={"/wishlist"}
-              className="flex flex-col items-center justify-center cursor-pointer"
-            >
-              <AiOutlineHeart className="text-xl" />
-              <span className="text-xs font-bold">Wishlist</span>
-            </Link>
-
-            {/* Bag icon */}
-            <Link
-              to={"/bag"}
-              className="flex flex-col items-center justify-center cursor-pointer"
-            >
-              <AiOutlineShoppingCart className="text-xl" />
-              <span className="text-xs font-bold">Bag</span>
-            </Link>
-          </div>
-        </nav>
-
-        {/* listings all subcategories of topcategories in dropdown */}
-        <NavDropDown
-          categories={categories}
-          handleMouseEnter={handleMouseEnter}
-          handleMouseLeave={handleMouseLeave}
-          activeCategory={activeCategory}
-        />
-
-        {/* Profile dropdown onhover profile you will dropdown which includes login and orders button  */}
-        {profileDropDown && (
-          <div
-            className="absolute top-18 right-14 shadow-lg border   p-5 bg-white flex flex-col space-y-2 z-40"
-            onMouseEnter={() => setPofileDropDown(true)}
-            onMouseLeave={() => setPofileDropDown(false)}
+    <ul className="flex">
+      {categories.map((category, i) => {
+        return (
+          <li
+            key={i}
+            className={`border-b-white font-semibold border-b-4 cursor-pointer px-4 lg:px-5 py-6 ${
+              category.name === "Men"
+                ? "hover:border-red-500 "
+                : category.name === "Women"
+                ? "hover:border-pink-500"
+                : "hover:border-orange-500"
+            }`}
           >
-            <div className="text-sm font-bold">Welcome</div>
-            <p className="font-semibold text-xs">
-              To access account and manage orders
-            </p>
-            <button className="border border-gray-200 font-bold text-sm text-red-500 p-2 hover:border-red-600">
-              <Link to={"/login"}>Login/SignUp</Link>
-            </button>
-            <button className="border border-gray-200 font-bold text-sm text-red-500 p-2 hover:border-red-600">
-              <Link to={"/orders"}>Orders</Link>
-            </button>
-          </div>
-        )}
-      </div>
-      {/* Mobile Navbar  */}
-      <MobileNav categories={categories} />
-    </>
+            <Link to={`/${category.name.toLowerCase()}`}>{category.name}</Link>
+          </li>
+        );
+      })}
+    </ul>
   );
 };
 
