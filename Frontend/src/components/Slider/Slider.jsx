@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
 // importing all the images of the slider
-import img1 from "../../assets/images/img-1.jpg";
-import img2 from "../../assets/images/img-2.jpg";
-import img3 from "../../assets/images/img-3.jpg";
-import img4 from "../../assets/images/img-4.jpg";
-import img5 from "../../assets/images/img-5.jpg";
-import img6 from "../../assets/images/img-6.jpg";
+import img1 from "../../assets/images/img-1.webp";
+import img2 from "../../assets/images/img-2.webp";
+import img3 from "../../assets/images/img-3.webp";
+import img4 from "../../assets/images/img-4.webp";
+import img5 from "../../assets/images/img-5.webp";
+import img6 from "../../assets/images/img-6.webp";
 
 // importing icons
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
@@ -35,11 +35,11 @@ function Slider() {
     /* The transform property is used to shift the visible image by updating the translateX value, creating the sliding effect. */
     /* The transition-transform property ensures the sliding animation happens smoothly over 300ms. */
 
-    <div className="flex flex-row flex-nowrap w-[100%] aspect-[8/7] md:aspect-[16/7] mt-4 md:mt-0 relative overflow-hidden shadow-2xl">
+    <div className="flex flex-row flex-nowrap w-[100%] aspect-[8/7] md:aspect-[16/7] relative overflow-hidden shadow-2xl">
       {sliderImgs.map((img, i) => {
         return (
           <div
-            className="w-[100%] h-[100%] flex-shrink-0 bg-cover bg-center transition-transform duration-300"
+            className="w-[100%] h-[100%] flex-shrink-0 bg-cover bg-center transition-transform duration-700"
             key={i}
             style={{
               backgroundImage: `url(${img})`,
@@ -83,8 +83,8 @@ function Slider() {
         {sliderImgs.map((_, i) => (
           <FaCircle
             key={i}
-            className={`cursor-pointer text-xs md:text-sm ${
-              i === currentImgIndex ? "text-rose-50" : "text-gray-400"
+            className={`cursor-pointer text-[10px] md:text-sm ${
+              i === currentImgIndex ? "text-rose-50" : "text-gray-300"
             }`}
             onClick={() => setCurrentImgIndex(i)}
           />

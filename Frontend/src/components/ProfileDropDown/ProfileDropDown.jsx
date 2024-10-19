@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function ProfileDropDown({ setProfileDropDown }) {
   return (
     <div
-      className="absolute top-[84px] right-[45px] shadow-lg border p-5 bg-white flex flex-col space-y-2 z-40"
+      className="hidden md:flex absolute top-[64px] right-[45px] shadow-lg border p-5 bg-white flex-col space-y-2"
       onMouseEnter={() => setProfileDropDown(true)}
       onMouseLeave={() => setProfileDropDown(false)}
     >

@@ -9,25 +9,27 @@ function DesktopNavDropDown({
 }) {
   return (
     <div
-      className="absolute left-[5%] top-18 pt-10 bg-white border border-gray-200 shadow-lg p-4 min-w-[90%] flex space-x-8  min-h-[70vh] z-40"
+      className="absolute left-[5%] top-[64px] pt-10 bg-white border border-gray-200 shadow-lg p-4 min-w-[90%] flex space-x-8  min-h-[70vh]"
       onMouseEnter={() => handleMouseEnter(activeCategory)} // Keeps dropdown open when mouse enters
       onMouseLeave={handleMouseLeave} // Hides dropdown when mouse leaves
     >
-      {categories[activeCategory].map((subcategory, subIndex) => {
+      {categories[
+        activeCategory === "Men" ? 0 : activeCategory === "Women" ? 1 : 2
+      ].subcategories.map((subcategory, subIndex) => {
         return (
           <div key={subIndex} className="mb-4">
             <span
               className={`font-bold text-sm ${
-                category.name === "Men"
+                activeCategory.name === "Men"
                   ? "text-red-500 "
-                  : category.name === "Women"
+                  : activeCategory.name === "Women"
                   ? "text-pink-500"
                   : "text-orange-500"
               }`}
             >
               <Link
                 className="cursor-pointer"
-                to={`/${category.name.toLowerCase()}/${subcategory.name
+                to={`/${activeCategory.toLowerCase()}/${subcategory.name
                   .toLowerCase()
                   .replace(/ /g, "-")}`}
               >
@@ -39,7 +41,7 @@ function DesktopNavDropDown({
               {subcategory.items.map((item, itemIndex) => (
                 <li key={itemIndex}>
                   <Link
-                    to={`/${category.name.toLowerCase()}/${subcategory.name
+                    to={`/${activeCategory.toLowerCase()}/${subcategory.name
                       .toLowerCase()
                       .replace(/ /g, "-")}/${item
                       .toLowerCase()

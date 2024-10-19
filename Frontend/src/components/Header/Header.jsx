@@ -14,18 +14,17 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { BsHandbag } from "react-icons/bs";
 
 // importing logo
-
 import logo from "../../assets/images/logo-placeholder-image.png";
 
 function Header() {
   const [profileDropDown, setProfileDropDown] = useState(false);
 
   return (
-    <header className="bg-white px-6 flex items-center justify-between shadow-md sticky top-0 z-40">
+    <header className="bg-white px-3 md-lg:px-6 flex justify-between shadow-2xl sticky top-0 z-40 h-16 mb-[4.5rem] md:mb-0">
       {/*  */}
 
       {/* logo */}
-      <Link to={"/"} className="font-bold">
+      <Link to={"/"} className="flex items-center">
         <img src={logo} className="w-24" alt="logo" />
       </Link>
 
@@ -36,17 +35,19 @@ function Header() {
 
       {/* Icons Section */}
 
-      <div className="flex gap-7 items-center">
+      <div className="flex gap-3 md:gap-7 relative z-10">
         {/* Profile icon */}
 
         <Link
           to={"/profile"}
           onMouseEnter={() => setProfileDropDown(true)}
           onMouseLeave={() => setProfileDropDown(false)}
-          className="flex flex-col items-center justify-center cursor-pointer relative bottom-[1.5px]"
+          className="flex flex-col items-center justify-center cursor-pointer relative h-full"
         >
           <LiaUserSolid style={{ fontSize: "28px" }} />
-          <span className="text-xs font-bold relative top-[4px]">Profile</span>
+          <span className="hidden md:block text-xs font-bold relative top-[3px]">
+            Profile
+          </span>
         </Link>
 
         {/* Wishlist icon */}
@@ -54,8 +55,13 @@ function Header() {
           to={"/wishlist"}
           className="flex flex-col items-center justify-center cursor-pointer"
         >
-          <IoMdHeartEmpty style={{ fontSize: "25px" }} />
-          <span className="text-xs font-bold relative top-[5px]">Wishlist</span>
+          <IoMdHeartEmpty
+            style={{ fontSize: "25px" }}
+            className="relative top-[1px]"
+          />
+          <span className="hidden md:block text-xs font-bold relative top-[5px]">
+            Wishlist
+          </span>
         </Link>
 
         {/* Bag icon */}
@@ -63,8 +69,13 @@ function Header() {
           to={"/bag"}
           className="flex flex-col items-center justify-center cursor-pointer"
         >
-          <BsHandbag style={{ fontSize: "23px" }} className="" />
-          <span className="text-xs font-bold relative top-[5px]">Bag</span>
+          <BsHandbag
+            style={{ fontSize: "23px" }}
+            className="relative bottom-[1px]"
+          />
+          <span className="hidden md:block text-xs font-bold relative top-[6px]">
+            Bag
+          </span>
         </Link>
       </div>
 

@@ -13,7 +13,7 @@ function Navbar() {
     });
   }, []);
 
-  return <nav>{windowWidth >= 768 ? <DesktopNav /> : "Mobile Nav"}</nav>;
+  return <nav>{windowWidth >= 768 ? <DesktopNav /> : ""}</nav>;
 }
 
 export default Navbar;
