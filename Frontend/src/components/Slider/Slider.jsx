@@ -1,3 +1,4 @@
+// importing hooks
 import { useEffect, useState } from "react";
 
 // importing all the images of the slider

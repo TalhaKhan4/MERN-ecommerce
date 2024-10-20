@@ -1,16 +1,13 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { FaUserCircle } from "react-icons/fa";
-import {
-  AiOutlineHeart,
-  AiOutlineShoppingCart,
-  AiOutlineMenu,
-} from "react-icons/ai";
-import { IoClose } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
-function MobileNav({ categories }) {
-  const location = useLocation();
+import { AiOutlineMenu } from "react-icons/ai";
 
+import { categories } from "./categories.js";
+
+import { IoCloseSharp } from "react-icons/io5";
+
+function MobileNav() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // For mobile menu
   const [activeMobileCategory, setActiveMobileCategory] = useState(null); // For mobile dropdown
 
@@ -26,55 +23,24 @@ function MobileNav({ categories }) {
 
   return (
     <div>
-      {/* Mobile Navbar */}
-      <div className="md:hidden p-4 bg-white border-b shadow-md flex justify-between items-center">
-        <div className="flex space-x-4">
-          {isMobileMenuOpen ? (
-            <IoClose
-              className="text-2xl cursor-pointer"
-              onClick={toggleMobileMenu}
-            />
-          ) : (
-            <AiOutlineMenu
-              className="text-2xl cursor-pointer"
-              onClick={toggleMobileMenu}
-            />
-          )}
-          <div className="font-bold">
-            <Link to={"/"}>Logo</Link>
-          </div>
-        </div>
-
-        <div className="flex items-center space-x-4">
-          <Link to={"/profile"}>
-            <FaUserCircle className="text-xl cursor-pointer" />
-          </Link>
-          <Link to={"/wishlist"}>
-            <AiOutlineHeart className="text-xl cursor-pointer" />
-          </Link>
-          <Link to={"/bag"}>
-            <AiOutlineShoppingCart className="text-xl cursor-pointer" />
-          </Link>
-        </div>
+      <div className="flex items-center absolute top-[50%] translate-y-[-50%] left-[0.75rem]">
+        {isMobileMenuOpen ? (
+          <IoCloseSharp
+            className="text-2xl cursor-pointer"
+            onClick={toggleMobileMenu}
+          />
+        ) : (
+          <AiOutlineMenu
+            className="text-2xl cursor-pointer"
+            onClick={toggleMobileMenu}
+          />
+        )}
       </div>
 
-      {/* Search bar */}
-      <div
-        className={` md:hidden ${
-          location.pathname != "/" && "hidden"
-        } mt-4 w-fit mx-auto shadow-lg border  rounded-3xl overflow-hidden`}
-      >
-        <input
-          type="text"
-          className=" border-gray-200 px-8 w-[300px] py-2 rounded-md text-sm placeholder-gray-400 focus:outline outline-gray-400 "
-          placeholder="Search for products"
-          style={{ fontSize: "12px" }} // Small placeholder text
-        />
-      </div>
+      {/* Mobile menu side bar */}
 
-      {/*Mobile menu  side bar  */}
       {isMobileMenuOpen && (
-        <div className=" md:hidden absolute top-14 left-0 w-[60vw] bg-gray-100 shadow-md border p-4 z-20 overflow-auto min-h-[90vh]">
+        <div className=" md:hidden absolute top-16 left-0 w-[60vw] bg-gray-100 shadow-md border p-4 z-50 overflow-auto h-[89vh] scrollbar-hide">
           <ul className="mt-4">
             {categories.map((category) => (
               <li key={category.name} className="border-b border-gray-200 py-2">

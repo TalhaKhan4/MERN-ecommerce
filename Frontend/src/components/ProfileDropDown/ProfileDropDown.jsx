@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 function ProfileDropDown({ setProfileDropDown }) {
   return (
     <div
-      className="hidden md:flex absolute top-[64px] right-[45px] shadow-lg border p-5 bg-white flex-col space-y-2"
+      className="hidden md:flex flex-col gap-2 absolute top-[64px] right-[45px] shadow-lg border p-5 bg-white"
       onMouseEnter={() => setProfileDropDown(true)}
       onMouseLeave={() => setProfileDropDown(false)}
     >
-      <div className="text-sm font-bold text-center">Welcome</div>
+      <p className="text-sm font-bold text-center">Welcome</p>
 
       <p className="font-semibold text-xs">
         To access account and manage orders

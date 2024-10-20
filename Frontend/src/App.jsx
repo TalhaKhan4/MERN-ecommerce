@@ -1,9 +1,9 @@
 // importing header component which will be rendered across all routes
-
 import Header from "./components/Header/Header.jsx";
 
 import { Route, Routes } from "react-router-dom";
 
+// importing pages for routing
 import Home from "./pages/Home.jsx";
 import SignIn from "./pages/SignIn.jsx";
 import SignUp from "./pages/SignUp.jsx";

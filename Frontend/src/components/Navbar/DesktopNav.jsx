@@ -1,9 +1,13 @@
+// importing hooks
 import { useState } from "react";
 
+// importing categories object
 import { categories } from "./categories.js";
 
-import { Link } from "react-router-dom";
+// importing other components
 import DesktopNavDropDown from "./DesktopNavDropDown.jsx";
+
+import { Link } from "react-router-dom";
 
 const DesktopNav = () => {
   const [activeCategory, setActiveCategory] = useState(null);
@@ -25,9 +29,9 @@ const DesktopNav = () => {
           return (
             <li
               key={i}
-              className={`border-b-white font-semibold border-b-4 h-full flex items-center cursor-pointer md:px-2 md-lg:px-3 lg:px-5 ${
+              className={`border-b-white border-b-4 font-semibold h-full flex items-center cursor-pointer md:px-2 md-lg:px-3 lg:px-5 ${
                 category.name === "Men"
-                  ? "hover:border-red-500 "
+                  ? "hover:border-red-600 "
                   : category.name === "Women"
                   ? "hover:border-pink-500"
                   : "hover:border-orange-500"

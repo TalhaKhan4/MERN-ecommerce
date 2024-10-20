@@ -24,25 +24,25 @@ function Header() {
       {/*  */}
 
       {/* logo */}
-      <Link to={"/"} className="flex items-center">
+      <Link to={"/"} className="flex items-center ml-8 md:ml-0">
         <img src={logo} className="w-24" alt="logo" />
       </Link>
 
-      {/* It renders links like Men, Women, kids */}
+      {/* It renders both laptop and mobile navbar */}
       <Navbar />
 
       <SearchBar />
 
       {/* Icons Section */}
 
-      <div className="flex gap-3 md:gap-7 relative z-10">
+      <div className="flex gap-3 md:gap-7">
         {/* Profile icon */}
 
         <Link
           to={"/profile"}
           onMouseEnter={() => setProfileDropDown(true)}
           onMouseLeave={() => setProfileDropDown(false)}
-          className="flex flex-col items-center justify-center cursor-pointer relative h-full"
+          className="flex flex-col items-center justify-center cursor-pointer"
         >
           <LiaUserSolid style={{ fontSize: "28px" }} />
           <span className="hidden md:block text-xs font-bold relative top-[3px]">
@@ -80,6 +80,7 @@ function Header() {
       </div>
 
       {/* profileDropDown is a boolean state variable and when its value is true then we render the profile drop down otherwise we don't */}
+
       {profileDropDown && (
         <ProfileDropDown setProfileDropDown={setProfileDropDown} />
       )}

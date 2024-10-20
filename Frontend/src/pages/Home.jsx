@@ -2,10 +2,10 @@ import Slider from "../components/Slider/Slider.jsx";
 
 function Home() {
   return (
-    <>
+    <main>
       <Slider />
-      <div>Home Page</div>
-    </>
+      <div className="text-center">Home Page</div>
+    </main>
   );
 }
 
