@@ -49,7 +49,7 @@ function DesktopNavDropDown({
                       .replace(/ /g, "-")}/${item
                       .toLowerCase()
                       .replace(/ /g, "-")}`}
-                    className="text-xs font-semibold text-gray-900 hover:text-black hover:font-bold"
+                    className="text-sm font-medium text-gray-900 hover:text-black hover:font-semibold"
                   >
                     {item}
                   </Link>

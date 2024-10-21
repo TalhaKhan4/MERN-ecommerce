@@ -1,10 +1,11 @@
 import Slider from "../components/Slider/Slider.jsx";
+import Feed from "../components/Feed/Feed.jsx";
 
 function Home() {
   return (
-    <main>
+    <main className="bg-gray-100">
       <Slider />
-      <div className="text-center">Home Page</div>
+      <Feed />
     </main>
   );
 }

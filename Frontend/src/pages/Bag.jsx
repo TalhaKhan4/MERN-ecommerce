@@ -1,5 +1,5 @@
 function Bag() {
-  return <div>Bag Page</div>;
+  return <div className="text-center">Bag Page</div>;
 }
 
 export default Bag;

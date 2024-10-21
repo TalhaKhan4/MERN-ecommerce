@@ -36,7 +36,7 @@ function Slider() {
     /* The transform property is used to shift the visible image by updating the translateX value, creating the sliding effect. */
     /* The transition-transform property ensures the sliding animation happens smoothly over 300ms. */
 
-    <div className="flex flex-row flex-nowrap w-[100%] aspect-[8/7] md:aspect-[16/7] relative overflow-hidden shadow-2xl">
+    <div className="flex flex-row flex-nowrap w-[100%] aspect-[8/7] md:aspect-[16/7] relative overflow-hidden shadow-xl">
       {sliderImgs.map((img, i) => {
         return (
           <div
