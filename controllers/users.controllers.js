@@ -21,7 +21,8 @@ async function getAllUsers(req, res, next) {
 }
 async function updateUser(req, res, next) {
   try {
-    const { userId } = req.params;
+    const userId = req.user._id;
+    // const { userId } = req.params;
     const { name, password, address } = req.body;
 
     // Update fields only if they are provided
@@ -64,7 +65,7 @@ async function updateUser(req, res, next) {
 }
 async function deleteUser(req, res, next) {
   try {
-    const { userId } = req.params;
+    const userId = req.user._id;
     if (!userId) {
       return res.status(400).json({
         message: "User id is required",
@@ -80,5 +81,20 @@ async function deleteUser(req, res, next) {
     next(error);
   }
 }
-async function logOut(req, res, next) {}
+async function logOut(req, res, next) {
+  try {
+    // Clear the auth token cookie
+    res.clearCookie("access_token", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "None",
+    });
+
+    return res.status(200).json({
+      message: "Logged out successfully",
+    });
+  } catch (error) {
+    next(error);
+  }
+}
 export { getAllUsers, updateUser, deleteUser, logOut };
