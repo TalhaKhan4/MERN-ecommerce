@@ -40,7 +40,7 @@ function MobileNav() {
       {/* Mobile menu side bar */}
 
       {isMobileMenuOpen && (
-        <div className=" md:hidden absolute top-16 left-0 w-[60vw] bg-gray-100 shadow-md border p-4 z-50 overflow-auto h-[89vh] scrollbar-hide">
+        <div className="md:hidden absolute top-16 left-0 w-[100vw] xs-sm:w-[60vw] bg-gray-100 shadow-md border p-4 z-50 overflow-auto h-[calc(100vh-4rem)] scrollbar-hide">
           <ul className="mt-4">
             {categories.map((category) => (
               <li key={category.name} className="border-b border-gray-200 py-2">
@@ -55,9 +55,9 @@ function MobileNav() {
                   </span>
                   <span
                     onClick={() => toggleMobileCategory(category.name)}
-                    className="font-bold text-lg"
+                    className="font-bold text-xl"
                   >
-                    {activeMobileCategory === category.name ? "-" : "+"}
+                    {activeMobileCategory === category.name ? "−" : "+"}
                   </span>
                 </div>
                 {activeMobileCategory === category.name && (
@@ -78,7 +78,7 @@ function MobileNav() {
                           {subcategory.items.map((item) => (
                             <li key={item} className="py-1 text-xs ">
                               <Link
-                                className="hover:underline hover:text-gray-400"
+                                className="text-sm font-medium text-gray-900 hover:text-black hover:font-semibold"
                                 to={`/${category.name.toLowerCase()}/${subcategory.name
                                   .toLowerCase()
                                   .replace(/ /g, "-")}/${item

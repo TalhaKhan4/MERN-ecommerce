@@ -49,14 +49,18 @@ function Feed() {
     <section className="pb-8">
       {/* title */}
 
-      <h1 className="text-6xl py-16 text-center font-semibold">#Foryou</h1>
+      <h1 className="text-3xl md:text-6xl py-16 text-center font-semibold">
+        #Foryou
+      </h1>
 
       {/* This div will hold all product cards */}
 
-      <div className="px-4 flex flex-wrap justify-between gap-y-5 mb-12">
+      {/* flex flex-wrap justify-center sm:justify-between gap-y-5 mb-12 px-4 */}
+
+      <div className="grid grid-cols-1 gap-y-5 gap-x-3 lg:gap-4 mb-12 px-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {displayedProducts.map((product) => {
           return (
-            // This link element represent a single product
+            // This component represents a single product card
             <ProductCard
               key={product.id}
               image={product.image}
@@ -71,7 +75,7 @@ function Feed() {
       {displayedProducts.length === allProducts.length &&
       allProducts.length > 0 ? (
         <p className="text-center text-xl">
-          Looks Like you have reached the end!
+          Looks like you have reached the end!
         </p>
       ) : currentBatch === 0 ? (
         ""
