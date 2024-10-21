@@ -10,7 +10,7 @@ function DesktopNavDropDown({
 }) {
   return (
     <div
-      className="absolute left-[5%] top-[64px] pt-10 bg-white border border-gray-200 shadow-lg p-4 min-w-[90%] flex gap-8 min-h-[70vh]"
+      className="absolute left-[5%] top-[64px] pt-10 bg-white border border-gray-200 shadow-lg p-4 min-w-[90%] flex gap-x-8 min-h-[70vh]"
       onMouseEnter={() => handleMouseEnter(activeCategory)} // Keeps dropdown open when mouse enters
       onMouseLeave={handleMouseLeave} // Hides dropdown when mouse leaves
     >

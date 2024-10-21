@@ -21,8 +21,6 @@ function Header() {
 
   return (
     <header className="bg-white px-3 md-lg:px-6 flex justify-between shadow-2xl sticky top-0 z-40 h-16 mb-[4.5rem] md:mb-0">
-      {/*  */}
-
       {/* logo */}
       <Link to={"/"} className="flex items-center ml-8 md:ml-0">
         <img src={logo} className="w-24" alt="logo" />
@@ -34,10 +32,8 @@ function Header() {
       <SearchBar />
 
       {/* Icons Section */}
-
       <div className="flex gap-3 md:gap-7">
         {/* Profile icon */}
-
         <Link
           to={"/profile"}
           onMouseEnter={() => setProfileDropDown(true)}
