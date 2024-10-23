@@ -73,28 +73,20 @@ const userSchema = new mongoose.Schema(
     },
 
     // Shopping cart: Array of product items with references to product schema
-    // cart: [
-    //   {
-    //     productId: {
-    //       type: mongoose.Schema.Types.ObjectId,
-    //       ref: "Product",
-    //       required: true,
-    //     },
-    //     quantity: {
-    //       type: Number,
-    //       required: true,
-    //       min: [1, "Quantity cannot be less than 1"],
-    //     },
-    //   },
-    // ],
+    cart: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Product",
+      },
+    ],
 
     // Wishlist: Array of product references the user has favorited
-    // wishlist: [
-    //   {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "Product",
-    //   },
-    // ],
+    wishlist: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Product",
+      },
+    ],
   },
   { timestamps: true }
 );

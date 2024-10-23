@@ -7,6 +7,7 @@ import helmet from "helmet";
 import compression from "compression";
 import AuthRoutes from "./routes/auth.routes.js";
 import UserRoutes from "./routes/user.routes.js";
+import ProductRoutes from "./routes/product.routes.js";
 // Load environment variables
 dotenv.config();
 
@@ -29,6 +30,7 @@ app.get("/", (req, res) => {
 });
 app.use("/api/auth", AuthRoutes);
 app.use("/api/users", UserRoutes);
+app.use("/api/product", ProductRoutes);
 
 // Wildcard route for handling 404 errors
 app.get("*", (req, res) => {

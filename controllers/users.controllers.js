@@ -19,6 +19,7 @@ async function getAllUsers(req, res, next) {
     next(error);
   }
 }
+
 async function updateUser(req, res, next) {
   try {
     const userId = req.user._id;
