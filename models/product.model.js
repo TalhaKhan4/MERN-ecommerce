@@ -109,7 +109,6 @@ const productSchema = new mongoose.Schema(
     },
     countInStock: {
       type: Number,
-      required: true,
       default: 1,
     },
     categories: [

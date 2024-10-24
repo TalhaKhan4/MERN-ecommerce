@@ -20,6 +20,26 @@ async function getAllUsers(req, res, next) {
   }
 }
 
+async function getSingleUser(req, res, next) {
+  try {
+    const { userId } = req.params;
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({
+        message: "No user found",
+      });
+    }
+    return res.status(200).json({
+      user: user,
+
+      message: "Single users retrieved successfully",
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
 async function updateUser(req, res, next) {
   try {
     const userId = req.user._id;
@@ -98,4 +118,4 @@ async function logOut(req, res, next) {
     next(error);
   }
 }
-export { getAllUsers, updateUser, deleteUser, logOut };
+export { getAllUsers, updateUser, deleteUser, logOut, getSingleUser };
